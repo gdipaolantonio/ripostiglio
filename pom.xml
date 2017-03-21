@@ -1,11 +1,30 @@
-<project>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
+
   <groupId>com.gdipaolantonio.ripostiglio</groupId>
   <artifactId>ripostiglio-parent</artifactId>
   <version>1.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>Ripostiglio</name>
 
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
+
+  <modules>
+    <module>domain</module>
+  </modules>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.jmock</groupId>
+      <artifactId>jmock-junit4</artifactId>
+      <version>2.8.2</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
 </project>
