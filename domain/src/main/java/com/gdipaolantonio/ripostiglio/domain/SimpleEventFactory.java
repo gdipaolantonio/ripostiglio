@@ -1,0 +1,17 @@
+package com.gdipaolantonio.ripostiglio.domain;
+
+import java.time.Clock;
+
+public class SimpleEventFactory implements EventFactory {
+
+  private final Clock clock;
+
+  public SimpleEventFactory(Clock clock) {
+    this.clock = clock;
+  }
+
+  @Override
+  public AddItemEvent newAddItemEvent(Item item) {
+    return new AddItemEvent(clock.instant(), item);
+  }
+}

@@ -1,6 +1,14 @@
 package com.gdipaolantonio.ripostiglio.domain;
 
+import static com.gdipaolantonio.ripostiglio.domain.ItemBuilder.anItem;
+import static java.time.Instant.EPOCH;
+
+import java.time.Instant;
+
 public class AddItemEventBuilder {
+
+  private Instant instant = EPOCH;
+  private Item item = anItem().build();;
 
   private AddItemEventBuilder() {}
 
@@ -9,6 +17,6 @@ public class AddItemEventBuilder {
   }
 
   public AddItemEvent build() {
-    return new AddItemEvent();
+    return new AddItemEvent(instant, item);
   }
 }
