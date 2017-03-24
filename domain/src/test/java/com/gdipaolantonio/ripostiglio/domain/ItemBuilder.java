@@ -2,7 +2,7 @@ package com.gdipaolantonio.ripostiglio.domain;
 
 public class ItemBuilder {
 
-  private String name = "Default name from Builder";
+  private ItemKey key = new ItemKey("Default name from Builder");
 
   private ItemBuilder() {}
 
@@ -11,11 +11,11 @@ public class ItemBuilder {
   }
 
   public Item build() {
-    return new Item(name);
+    return new Item(key);
   }
 
   public ItemBuilder withName(String name) {
-    this.name = name;
+    this.key = new ItemKey(name);
     return this;
   }
 }

@@ -2,17 +2,17 @@ package com.gdipaolantonio.ripostiglio.domain;
 
 import java.util.Objects;
 
-public class Item {
+public class ItemKey {
 
-  private final ItemKey key;
+  private final String name;
 
-  public Item(ItemKey key) {
-    this.key = key;
+  public ItemKey(String name) {
+    this.name = name;
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(key);
+    return Objects.hash(name);
   }
 
   @Override
@@ -23,13 +23,13 @@ public class Item {
       return false;
     if (getClass() != obj.getClass())
       return false;
-    Item other = (Item) obj;
+    ItemKey other = (ItemKey) obj;
 
-    return Objects.equals(key, other.key);
+    return Objects.equals(name, other.name);
   }
 
   @Override
   public String toString() {
-    return "Item [key=" + key + "]";
+    return "ItemKey [name=" + name + "]";
   }
 }
