@@ -16,7 +16,7 @@ public class AddItemEventBuilder {
     return new AddItemEventBuilder();
   }
 
-  public Event build() {
+  public Event<Item> build() {
     return new AddItemEvent(instant, item);
   }
 }

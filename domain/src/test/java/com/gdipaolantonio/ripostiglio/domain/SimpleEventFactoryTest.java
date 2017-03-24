@@ -19,7 +19,7 @@ public class SimpleEventFactoryTest {
     Clock clock = Clock.fixed(fixedInstant, ZoneId.of("+01"));
     Item item = anItem().withName("item name").build();
 
-    Event event = new SimpleEventFactory(clock).newAddItemEvent(item);
+    Event<Item> event = new SimpleEventFactory(clock).newAddItemEvent(item);
 
     assertThat(event.created(), is(fixedInstant));
     assertThat(event.body(), is(item));

@@ -26,7 +26,7 @@ public class StorageTest {
   public void addAnItem() throws Exception {
 
     Item itemToBeAdded = anItem().build();
-    Event event = anAddItemEvent().build();
+    Event<Item> event = anAddItemEvent().build();
 
     context.checking(new Expectations() {{
       allowing(factory).newAddItemEvent(itemToBeAdded); will(returnValue(event));
