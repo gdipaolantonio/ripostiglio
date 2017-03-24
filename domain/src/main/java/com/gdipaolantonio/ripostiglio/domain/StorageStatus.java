@@ -7,7 +7,11 @@ public class StorageStatus {
 
   private final Stream<Event<?>> events;
 
-  public StorageStatus(Stream<Event<?>> events) {
+  public static StorageStatus of(Stream<Event<?>> events) {
+    return new StorageStatus(events);
+  }
+
+  private StorageStatus(Stream<Event<?>> events) {
     this.events = events;
   }
 

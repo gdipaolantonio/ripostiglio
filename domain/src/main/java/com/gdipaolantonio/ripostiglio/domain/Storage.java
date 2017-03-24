@@ -17,6 +17,6 @@ public class Storage {
   }
 
   public StorageStatus status() {
-    return new StorageStatus(eventStore.events());
+    return StorageStatus.of(eventStore.events());
   }
 }

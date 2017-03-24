@@ -45,7 +45,7 @@ public class StorageTest {
   public void getStorageStatus() throws Exception {
 
     Stream<Event<?>> events = Stream.of(anEventStub().build());
-    StorageStatus expected = new StorageStatus(events);
+    StorageStatus expected = StorageStatus.of(events);
 
     context.checking(new Expectations() {{
       allowing(eventStore).events(); will(returnValue(events));
