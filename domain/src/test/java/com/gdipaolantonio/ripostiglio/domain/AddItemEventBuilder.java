@@ -19,4 +19,9 @@ public class AddItemEventBuilder {
   public Event<Item> build() {
     return new AddItemEvent(instant, item);
   }
+
+  public AddItemEventBuilder of(ItemBuilder item) {
+    this.item = item.build();
+    return this;
+  }
 }

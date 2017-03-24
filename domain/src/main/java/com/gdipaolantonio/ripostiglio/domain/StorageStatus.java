@@ -11,6 +11,10 @@ public class StorageStatus {
     this.events = events;
   }
 
+  public long quantityFor(ItemKey itemKey) {
+    return events.count();
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(events);
