@@ -1,5 +1,7 @@
 package com.gdipaolantonio.ripostiglio.domain;
 
+import com.gdipaolantonio.ripostiglio.eventstore.EventStore;
+
 public class Storage {
 
   private final EventFactory factory;

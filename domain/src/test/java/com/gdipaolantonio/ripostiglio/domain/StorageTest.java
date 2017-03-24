@@ -9,6 +9,8 @@ import org.jmock.integration.junit4.JUnitRuleMockery;
 import org.junit.Rule;
 import org.junit.Test;
 
+import com.gdipaolantonio.ripostiglio.eventstore.EventStore;
+
 public class StorageTest {
 
   @Rule
@@ -24,7 +26,7 @@ public class StorageTest {
   public void addAnItem() throws Exception {
 
     Item itemToBeAdded = anItem().build();
-    AddItemEvent event = anAddItemEvent().build();
+    Event event = anAddItemEvent().build();
 
     context.checking(new Expectations() {{
       allowing(factory).newAddItemEvent(itemToBeAdded); will(returnValue(event));
