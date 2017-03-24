@@ -15,4 +15,8 @@ public class Storage {
   public void addItem(Item item) {
     eventStore.store(factory.newAddItemEvent(item));
   }
+
+  public StorageStatus status() {
+    return new StorageStatus(eventStore.events());
+  }
 }
