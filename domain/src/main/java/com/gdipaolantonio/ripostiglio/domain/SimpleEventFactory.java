@@ -12,6 +12,6 @@ public class SimpleEventFactory implements EventFactory {
 
   @Override
   public Event<Item> newAddItemEvent(Item item) {
-    return new AddItemEvent(clock.instant(), item);
+    return new ItemAddedEvent(clock.instant(), item);
   }
 }

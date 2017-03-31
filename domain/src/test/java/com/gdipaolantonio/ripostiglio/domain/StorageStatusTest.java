@@ -1,6 +1,6 @@
 package com.gdipaolantonio.ripostiglio.domain;
 
-import static com.gdipaolantonio.ripostiglio.domain.AddItemEventBuilder.anAddItemEvent;
+import static com.gdipaolantonio.ripostiglio.domain.ItemAddedEventBuilder.anAddItemEvent;
 import static com.gdipaolantonio.ripostiglio.domain.ItemBuilder.anItem;
 import static java.util.stream.Stream.empty;
 import static org.hamcrest.Matchers.is;

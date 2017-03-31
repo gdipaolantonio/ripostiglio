@@ -5,22 +5,22 @@ import static java.time.Instant.EPOCH;
 
 import java.time.Instant;
 
-public class AddItemEventBuilder {
+public class ItemAddedEventBuilder {
 
   private Instant instant = EPOCH;
   private Item item = anItem().build();;
 
-  private AddItemEventBuilder() {}
+  private ItemAddedEventBuilder() {}
 
-  public static AddItemEventBuilder anAddItemEvent() {
-    return new AddItemEventBuilder();
+  public static ItemAddedEventBuilder anAddItemEvent() {
+    return new ItemAddedEventBuilder();
   }
 
   public Event<Item> build() {
-    return new AddItemEvent(instant, item);
+    return new ItemAddedEvent(instant, item);
   }
 
-  public AddItemEventBuilder of(ItemBuilder item) {
+  public ItemAddedEventBuilder of(ItemBuilder item) {
     this.item = item.build();
     return this;
   }

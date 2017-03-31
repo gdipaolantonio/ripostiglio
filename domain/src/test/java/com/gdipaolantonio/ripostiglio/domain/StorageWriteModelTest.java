@@ -1,6 +1,6 @@
 package com.gdipaolantonio.ripostiglio.domain;
 
-import static com.gdipaolantonio.ripostiglio.domain.AddItemEventBuilder.anAddItemEvent;
+import static com.gdipaolantonio.ripostiglio.domain.ItemAddedEventBuilder.anAddItemEvent;
 import static com.gdipaolantonio.ripostiglio.domain.EventStubBuilder.anEventStub;
 import static com.gdipaolantonio.ripostiglio.domain.ItemBuilder.anItem;
 import static org.hamcrest.Matchers.is;
@@ -16,7 +16,7 @@ import org.junit.Test;
 
 import com.gdipaolantonio.ripostiglio.eventstore.EventStore;
 
-public class StorageTest {
+public class StorageWriteModelTest {
 
   @Rule
   public JUnitRuleMockery context = new JUnitRuleMockery();
@@ -38,7 +38,7 @@ public class StorageTest {
       oneOf(eventStore).store(event);
     }});
 
-    new Storage(factory, eventStore).addItem(itemToBeAdded);
+    new StorageWriteModel(factory, eventStore).addItem(itemToBeAdded);
   }
 
   @Test
@@ -51,7 +51,7 @@ public class StorageTest {
       allowing(eventStore).events(); will(returnValue(events));
     }});
 
-    StorageStatus status = new Storage(factory, eventStore).status();
+    StorageStatus status = new StorageWriteModel(factory, eventStore).status();
 
     assertThat(status, is(expected));
   }
