@@ -11,6 +11,10 @@ public class StorageQueryModel {
   }
 
   public long quantityFor(ItemKey itemKey) {
-    return eventStore.events().count();
+    return eventStore.events()
+      .filter(event -> event instanceof ItemAddedEvent)
+      .map(event -> (ItemAddedEvent) event)
+      .filter(event -> event.body().hasKey(itemKey))
+      .count();
   }
 }

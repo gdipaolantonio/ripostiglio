@@ -10,6 +10,10 @@ public class Item {
     this.key = key;
   }
 
+  public boolean hasKey(ItemKey key) {
+    return this.key.equals(key);
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(key);

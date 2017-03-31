@@ -9,7 +9,6 @@ import static org.junit.Assert.assertThat;
 
 import java.util.List;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import com.gdipaolantonio.ripostiglio.eventstore.InMemoryEventStore;
@@ -27,7 +26,7 @@ public class StorageQueryModelTest {
   }
 
   @Test
-  public void countQuantitiesWithOneTypeOfItem() throws Exception {
+  public void addOneItemType() throws Exception {
 
     List<Event<?>> events = asList(
       oneSmartphoneAdded(),
@@ -42,8 +41,7 @@ public class StorageQueryModelTest {
   }
 
   @Test
-  @Ignore
-  public void countQuantitiesWithManyTypesOfItem() throws Exception {
+  public void addManyItemTypes() throws Exception {
 
     List<Event<?>> events = asList(
       oneSmartphoneAdded(),
