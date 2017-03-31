@@ -28,7 +28,7 @@ public class InMemoryEventStoreTest {
 
     Collection<Event<?>> events = new ConcurrentLinkedQueue<>();
 
-    new InMemoryEventStore(events).store(FIRST_EVENT);
+    new InMemoryEventStore(events).append(FIRST_EVENT);
 
     assertThat(events, contains(FIRST_EVENT));
   }
@@ -39,9 +39,9 @@ public class InMemoryEventStoreTest {
     Collection<Event<?>> events = new ConcurrentLinkedQueue<>();
 
     EventStore eventStore = new InMemoryEventStore(events);
-    eventStore.store(FIRST_EVENT);
-    eventStore.store(SECOND_EVENT);
-    eventStore.store(THIRD_EVENT);
+    eventStore.append(FIRST_EVENT);
+    eventStore.append(SECOND_EVENT);
+    eventStore.append(THIRD_EVENT);
 
     assertThat(events, contains(FIRST_EVENT, SECOND_EVENT, THIRD_EVENT));
   }

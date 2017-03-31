@@ -12,7 +12,7 @@ public class StorageCommandModel {
     this.eventStore = eventStore;
   }
 
-  public void addItem(Item item) {
-    eventStore.store(factory.newItemAddedEvent(item));
+  public void buyItem(Item item) {
+    eventStore.append(factory.newItemBoughtEvent(item));
   }
 }

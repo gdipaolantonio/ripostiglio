@@ -6,7 +6,7 @@ import com.gdipaolantonio.ripostiglio.domain.Event;
 
 public interface EventStore {
 
-  void store(Event<?> event);
+  void append(Event<?> event);
 
   Stream<Event<?>> events();
 }

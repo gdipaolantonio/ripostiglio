@@ -2,12 +2,12 @@ package com.gdipaolantonio.ripostiglio.domain;
 
 import java.time.Instant;
 
-public class ItemAddedEvent implements Event<Item> {
+public class ItemBoughtEvent implements Event<Item> {
 
   private final Instant created;
   private final Item item;
 
-  public ItemAddedEvent(Instant created, Item item) {
+  public ItemBoughtEvent(Instant created, Item item) {
     this.created = created;
     this.item = item;
   }

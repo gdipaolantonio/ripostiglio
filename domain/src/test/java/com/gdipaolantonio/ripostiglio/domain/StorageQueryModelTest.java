@@ -1,6 +1,6 @@
 package com.gdipaolantonio.ripostiglio.domain;
 
-import static com.gdipaolantonio.ripostiglio.domain.ItemAddedEventBuilder.anItemAddedEvent;
+import static com.gdipaolantonio.ripostiglio.domain.ItemBoughtEventBuilder.anItemBoughtEvent;
 import static com.gdipaolantonio.ripostiglio.domain.ItemBuilder.anItem;
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
@@ -26,12 +26,12 @@ public class StorageQueryModelTest {
   }
 
   @Test
-  public void addOneItemType() throws Exception {
+  public void buyOneTypeOfItem() throws Exception {
 
     List<Event<?>> events = asList(
-      oneSmartphoneAdded(),
-      oneSmartphoneAdded(),
-      oneSmartphoneAdded()
+      oneSmartphoneBought(),
+      oneSmartphoneBought(),
+      oneSmartphoneBought()
     );
     StorageQueryModel storage = new StorageQueryModel(eventStoreWith(events));
 
@@ -41,15 +41,15 @@ public class StorageQueryModelTest {
   }
 
   @Test
-  public void addManyItemTypes() throws Exception {
+  public void buyManyItemsOfDifferentTypes() throws Exception {
 
     List<Event<?>> events = asList(
-      oneSmartphoneAdded(),
-      oneSmartphoneAdded(),
-      oneSmartphoneAdded(),
-      oneLaptopAdded(),
-      oneTabletAdded(),
-      oneTabletAdded()
+      oneSmartphoneBought(),
+      oneSmartphoneBought(),
+      oneSmartphoneBought(),
+      oneLaptopBought(),
+      oneTabletBought(),
+      oneTabletBought()
     );
     StorageQueryModel status = new StorageQueryModel(eventStoreWith(events));
 
@@ -66,15 +66,15 @@ public class StorageQueryModelTest {
     return new InMemoryEventStore(events);
   }
 
-  private Event<Item> oneSmartphoneAdded() {
-    return anItemAddedEvent().of(anItem().withName("smartphone")).build();
+  private Event<Item> oneSmartphoneBought() {
+    return anItemBoughtEvent().of(anItem().withName("smartphone")).build();
   }
 
-  private Event<Item> oneTabletAdded() {
-    return anItemAddedEvent().of(anItem().withName("tablet")).build();
+  private Event<Item> oneTabletBought() {
+    return anItemBoughtEvent().of(anItem().withName("tablet")).build();
   }
 
-  private Event<Item> oneLaptopAdded() {
-    return anItemAddedEvent().of(anItem().withName("laptop")).build();
+  private Event<Item> oneLaptopBought() {
+    return anItemBoughtEvent().of(anItem().withName("laptop")).build();
   }
 }

@@ -1,6 +1,6 @@
 package com.gdipaolantonio.ripostiglio.domain;
 
-import static com.gdipaolantonio.ripostiglio.domain.ItemAddedEventBuilder.anItemAddedEvent;
+import static com.gdipaolantonio.ripostiglio.domain.ItemBoughtEventBuilder.anItemBoughtEvent;
 import static com.gdipaolantonio.ripostiglio.domain.ItemBuilder.anItem;
 
 import org.jmock.Expectations;
@@ -26,13 +26,13 @@ public class StorageCommandModelTest {
   public void addAnItem() throws Exception {
 
     Item itemToBeAdded = anItem().build();
-    Event<Item> event = anItemAddedEvent().build();
+    Event<Item> event = anItemBoughtEvent().build();
 
     context.checking(new Expectations() {{
-      allowing(factory).newItemAddedEvent(itemToBeAdded); will(returnValue(event));
-      oneOf(eventStore).store(event);
+      allowing(factory).newItemBoughtEvent(itemToBeAdded); will(returnValue(event));
+      oneOf(eventStore).append(event);
     }});
 
-    new StorageCommandModel(factory, eventStore).addItem(itemToBeAdded);
+    new StorageCommandModel(factory, eventStore).buyItem(itemToBeAdded);
   }
 }

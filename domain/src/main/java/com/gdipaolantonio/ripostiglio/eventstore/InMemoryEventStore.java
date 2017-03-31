@@ -14,7 +14,7 @@ public class InMemoryEventStore implements EventStore {
   }
 
   @Override
-  public void store(Event<?> event) {
+  public void append(Event<?> event) {
     events.add(event);
   }
 
