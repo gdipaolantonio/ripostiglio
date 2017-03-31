@@ -2,5 +2,5 @@ package com.gdipaolantonio.ripostiglio.domain;
 
 public interface EventFactory {
 
-  Event<Item> newAddItemEvent(Item item);
+  Event<Item> newItemAddedEvent(Item item);
 }

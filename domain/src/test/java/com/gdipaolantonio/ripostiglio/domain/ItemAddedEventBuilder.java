@@ -12,7 +12,7 @@ public class ItemAddedEventBuilder {
 
   private ItemAddedEventBuilder() {}
 
-  public static ItemAddedEventBuilder anAddItemEvent() {
+  public static ItemAddedEventBuilder anItemAddedEvent() {
     return new ItemAddedEventBuilder();
   }
 
