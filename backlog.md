@@ -1,0 +1,2 @@
+- [x] Add an item to the storage and count how many items of that type we have
+- [ ] Remove an item from the storage and count how many items of that type we have
