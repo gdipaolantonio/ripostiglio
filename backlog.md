@@ -1,2 +1,7 @@
 - [x] Add an item to the storage and count how many items of that type we have
 - [ ] Remove an item from the storage and count how many items of that type we have
+- [ ] Add a REST API
+- [ ] Persist events
+- [ ] Persist projections
+- [ ] Take and load snapshots
+- [ ] Web UI
