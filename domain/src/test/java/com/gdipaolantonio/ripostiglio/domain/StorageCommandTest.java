@@ -1,6 +1,6 @@
 package com.gdipaolantonio.ripostiglio.domain;
 
-import static com.gdipaolantonio.ripostiglio.domain.ItemBoughtEventBuilder.anItemBoughtEvent;
+import static com.gdipaolantonio.ripostiglio.domain.ItemStoredEventBuilder.anItemStoredEvent;
 import static com.gdipaolantonio.ripostiglio.domain.ItemBuilder.anItem;
 
 import org.jmock.Expectations;
@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import com.gdipaolantonio.ripostiglio.eventstore.EventStore;
 
-public class StorageCommandModelTest {
+public class StorageCommandTest {
 
   @Rule
   public JUnitRuleMockery context = new JUnitRuleMockery();
@@ -23,16 +23,16 @@ public class StorageCommandModelTest {
   private EventStore eventStore;
 
   @Test
-  public void addAnItem() throws Exception {
+  public void storeAnItem() throws Exception {
 
-    Item itemToBeAdded = anItem().build();
-    Event<Item> event = anItemBoughtEvent().build();
+    Item itemToBeStored = anItem().build();
+    Event<Item> event = anItemStoredEvent().build();
 
     context.checking(new Expectations() {{
-      allowing(factory).newItemBoughtEvent(itemToBeAdded); will(returnValue(event));
+      allowing(factory).newItemStoredEvent(itemToBeStored); will(returnValue(event));
       oneOf(eventStore).append(event);
     }});
 
-    new StorageCommandModel(factory, eventStore).buyItem(itemToBeAdded);
+    new StorageCommand(factory, eventStore).storeItem(itemToBeStored);
   }
 }

@@ -1,6 +1,6 @@
 package com.gdipaolantonio.ripostiglio.domain;
 
-import static com.gdipaolantonio.ripostiglio.domain.ItemBoughtEventBuilder.anItemBoughtEvent;
+import static com.gdipaolantonio.ripostiglio.domain.ItemStoredEventBuilder.anItemStoredEvent;
 import static com.gdipaolantonio.ripostiglio.domain.ItemBuilder.anItem;
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
@@ -13,12 +13,12 @@ import org.junit.Test;
 
 import com.gdipaolantonio.ripostiglio.eventstore.InMemoryEventStore;
 
-public class StorageQueryModelTest {
+public class StorageQueryTest {
 
   @Test
   public void withAnEmptyStream() throws Exception {
 
-    StorageQueryModel storage = new StorageQueryModel(eventStoreWith(emptyList()));
+    StorageQuery storage = new StorageQuery(eventStoreWith(emptyList()));
 
     long count = storage.quantityFor(new ItemKey("item name"));
 
@@ -26,14 +26,14 @@ public class StorageQueryModelTest {
   }
 
   @Test
-  public void buyOneTypeOfItem() throws Exception {
+  public void storeOneTypeOfItem() throws Exception {
 
     List<Event<?>> events = asList(
-      oneSmartphoneBought(),
-      oneSmartphoneBought(),
-      oneSmartphoneBought()
+      oneSmartphoneStored(),
+      oneSmartphoneStored(),
+      oneSmartphoneStored()
     );
-    StorageQueryModel storage = new StorageQueryModel(eventStoreWith(events));
+    StorageQuery storage = new StorageQuery(eventStoreWith(events));
 
     long count = storage.quantityFor(new ItemKey("smartphone"));
 
@@ -44,14 +44,14 @@ public class StorageQueryModelTest {
   public void buyManyItemsOfDifferentTypes() throws Exception {
 
     List<Event<?>> events = asList(
-      oneSmartphoneBought(),
-      oneSmartphoneBought(),
-      oneSmartphoneBought(),
-      oneLaptopBought(),
-      oneTabletBought(),
-      oneTabletBought()
+      oneSmartphoneStored(),
+      oneSmartphoneStored(),
+      oneSmartphoneStored(),
+      oneLaptopStored(),
+      oneTabletStored(),
+      oneTabletStored()
     );
-    StorageQueryModel status = new StorageQueryModel(eventStoreWith(events));
+    StorageQuery status = new StorageQuery(eventStoreWith(events));
 
     long smartphoneCount = status.quantityFor(new ItemKey("smartphone"));
     long tabletCount = status.quantityFor(new ItemKey("tablet"));
@@ -66,15 +66,15 @@ public class StorageQueryModelTest {
     return new InMemoryEventStore(events);
   }
 
-  private Event<Item> oneSmartphoneBought() {
-    return anItemBoughtEvent().of(anItem().withName("smartphone")).build();
+  private Event<Item> oneSmartphoneStored() {
+    return anItemStoredEvent().of(anItem().withName("smartphone")).build();
   }
 
-  private Event<Item> oneTabletBought() {
-    return anItemBoughtEvent().of(anItem().withName("tablet")).build();
+  private Event<Item> oneTabletStored() {
+    return anItemStoredEvent().of(anItem().withName("tablet")).build();
   }
 
-  private Event<Item> oneLaptopBought() {
-    return anItemBoughtEvent().of(anItem().withName("laptop")).build();
+  private Event<Item> oneLaptopStored() {
+    return anItemStoredEvent().of(anItem().withName("laptop")).build();
   }
 }
