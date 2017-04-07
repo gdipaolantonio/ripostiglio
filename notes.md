@@ -1,2 +1,2 @@
-[ ] Now we buy an Item, that have an ItemKey internally. Is it really the best thing to do? Maybe I could use only ItemKey, and have Item to be taken from a sort of 'glossary data store'.
-[ ] We have to construct a more complex Aggregate from StorageQueryModel.quantityFor(ItemKey)? Now it returns the quantity as long. We could let the QueryModel construct a sort of 'Storage' Aggregate that could be the representation of the current status of the Storage.
+- [ ] Now we buy an Item, that have an ItemKey internally. Is it really the best thing to do? Maybe I could use only ItemKey, and have Item to be taken from a sort of 'glossary data store'.
+- [ ] We have to construct a more complex Aggregate from StorageQueryModel.quantityFor(ItemKey)? Now it returns the quantity as long. We could let the QueryModel construct a sort of 'Storage' Aggregate that could be the representation of the current status of the Storage.
