@@ -15,4 +15,8 @@ public class StorageCommand {
   public void storeItem(Item item) {
     eventStore.append(factory.newItemStoredEvent(item));
   }
+
+  public void evictItem(Item item) {
+    eventStore.append(factory.newItemEvictedEvent(item));
+  }
 }

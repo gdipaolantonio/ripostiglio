@@ -1,7 +1,8 @@
 package com.gdipaolantonio.ripostiglio.domain;
 
-import static com.gdipaolantonio.ripostiglio.domain.ItemStoredEventBuilder.anItemStoredEvent;
 import static com.gdipaolantonio.ripostiglio.domain.ItemBuilder.anItem;
+import static com.gdipaolantonio.ripostiglio.domain.ItemEvictedEventBuilder.anItemEvictedEvent;
+import static com.gdipaolantonio.ripostiglio.domain.ItemStoredEventBuilder.anItemStoredEvent;
 
 import org.jmock.Expectations;
 import org.jmock.auto.Mock;
@@ -34,5 +35,19 @@ public class StorageCommandTest {
     }});
 
     new StorageCommand(factory, eventStore).storeItem(itemToBeStored);
+  }
+
+  @Test
+  public void evictAnItem() throws Exception {
+
+    Item itemToBeEvicted = anItem().build();
+    Event<Item> event = anItemEvictedEvent().build();
+
+    context.checking(new Expectations() {{
+      allowing(factory).newItemEvictedEvent(itemToBeEvicted); will(returnValue(event));
+      oneOf(eventStore).append(event);
+    }});
+
+    new StorageCommand(factory, eventStore).evictItem(itemToBeEvicted);
   }
 }
