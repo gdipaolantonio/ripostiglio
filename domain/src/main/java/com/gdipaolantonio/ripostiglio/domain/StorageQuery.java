@@ -10,11 +10,8 @@ public class StorageQuery {
     this.eventStore = eventStore;
   }
 
-  public long quantityFor(ItemKey itemKey) {
-    return eventStore.events()
-      .filter(event -> event instanceof ItemStoredEvent)
-      .map(event -> (ItemStoredEvent) event)
-      .filter(event -> event.body().hasKey(itemKey))
-      .count();
+  public long quantityFor(ItemKey key) {
+    Storage storage = eventStore.events().reduce(new Storage(), Storage::apply, (t, u) -> null);
+    return storage.quantityFor(key);
   }
 }

@@ -14,6 +14,10 @@ public class Item {
     return this.key.equals(key);
   }
 
+  public ItemKey key() {
+    return key;
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(key);

@@ -10,7 +10,6 @@ import static org.junit.Assert.assertThat;
 
 import java.util.List;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import com.gdipaolantonio.ripostiglio.eventstore.InMemoryEventStore;
@@ -65,7 +64,6 @@ public class StorageQueryTest {
   }
 
   @Test
-  @Ignore
   public void storeAndEvictOneTypeOfItem() throws Exception {
 
     List<Event<?>> events = asList(
