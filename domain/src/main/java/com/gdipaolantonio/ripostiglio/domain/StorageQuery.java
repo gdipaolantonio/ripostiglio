@@ -11,7 +11,11 @@ public class StorageQuery {
   }
 
   public long quantityFor(ItemKey key) {
-    Storage storage = eventStore.events().reduce(new Storage(), Storage::apply, (t, u) -> null);
-    return storage.quantityFor(key);
+    return storage().quantityFor(key);
+  }
+
+  private Storage storage() {
+    return eventStore.events()
+        .reduce(new Storage(), Storage::apply, (t, u) -> null);
   }
 }

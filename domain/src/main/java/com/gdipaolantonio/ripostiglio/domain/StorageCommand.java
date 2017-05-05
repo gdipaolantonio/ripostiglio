@@ -12,11 +12,11 @@ public class StorageCommand {
     this.eventStore = eventStore;
   }
 
-  public void storeItem(Item item) {
+  public void store(Item item) {
     eventStore.append(factory.newItemStoredEvent(item));
   }
 
-  public void evictItem(Item item) {
+  public void evict(Item item) {
     eventStore.append(factory.newItemEvictedEvent(item));
   }
 }

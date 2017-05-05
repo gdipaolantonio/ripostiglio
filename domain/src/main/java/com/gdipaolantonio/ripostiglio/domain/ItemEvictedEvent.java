@@ -44,6 +44,6 @@ public class ItemEvictedEvent implements Event<Item> {
 
   @Override
   public String toString() {
-    return "ItemEvictedEvent [instant=" + created + ", item=" + item + "]";
+    return "ItemEvictedEvent [created=" + created + ", item=" + item + "]";
   }
 }

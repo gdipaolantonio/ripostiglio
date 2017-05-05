@@ -34,7 +34,7 @@ public class StorageCommandTest {
       oneOf(eventStore).append(event);
     }});
 
-    new StorageCommand(factory, eventStore).storeItem(itemToBeStored);
+    new StorageCommand(factory, eventStore).store(itemToBeStored);
   }
 
   @Test
@@ -48,6 +48,6 @@ public class StorageCommandTest {
       oneOf(eventStore).append(event);
     }});
 
-    new StorageCommand(factory, eventStore).evictItem(itemToBeEvicted);
+    new StorageCommand(factory, eventStore).evict(itemToBeEvicted);
   }
 }
